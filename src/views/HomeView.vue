@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { RouterLink } from 'vue-router'
 import HomeTopIcons from '../components/home/HomeTopIcons.vue'
+import HomeCards from '@/components/home/HomeCards.vue'
 </script>
 
 <template>
@@ -20,6 +21,7 @@ import HomeTopIcons from '../components/home/HomeTopIcons.vue'
   </header>
   <main class="flex flex-col gap-8 max-w-[1440px] mx-auto">
     <HomeTopIcons />
+    <HomeCards />
   </main>
 </template>
 
