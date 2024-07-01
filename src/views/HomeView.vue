@@ -2,6 +2,7 @@
 import { RouterLink } from 'vue-router'
 import HomeTopIcons from '../components/home/HomeTopIcons.vue'
 import HomeCards from '@/components/home/HomeCards.vue'
+import HomeBottomIcons from '@/components/home/HomeBottomIcons.vue'
 </script>
 
 <template>
@@ -22,6 +23,7 @@ import HomeCards from '@/components/home/HomeCards.vue'
   <main class="flex flex-col gap-8 max-w-[1440px] mx-auto">
     <HomeTopIcons />
     <HomeCards />
+    <HomeBottomIcons />
   </main>
 </template>
 
