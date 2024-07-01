@@ -3,6 +3,9 @@ import { RouterLink } from 'vue-router'
 import HomeTopIcons from '../components/home/HomeTopIcons.vue'
 import HomeCards from '@/components/home/HomeCards.vue'
 import HomeBottomIcons from '@/components/home/HomeBottomIcons.vue'
+import { productData } from '../data'
+import HomeProductCard from '@/components/home/HomeProductCard.vue'
+import FooterView from '@/layout/footer/FooterView.vue'
 </script>
 
 <template>
@@ -20,11 +23,21 @@ import HomeBottomIcons from '@/components/home/HomeBottomIcons.vue'
       >
     </div>
   </header>
-  <main class="flex flex-col gap-8 max-w-[1440px] mx-auto">
+  <div class="mb-8">
     <HomeTopIcons />
-    <HomeCards />
-    <HomeBottomIcons />
+  </div>
+  <main class="w-full bg-[#FAF7F2] py-24">
+    <div class="flex flex-col gap-8 max-w-[1440px] mx-auto">
+      <HomeCards />
+      <HomeBottomIcons />
+      <div class="flex flex-col sm:flex-row justify-around sm:flex-wrap">
+        <div v-for="data in productData" :key="data.pizzaName">
+          <HomeProductCard :data="data" />
+        </div>
+      </div>
+    </div>
   </main>
+  <FooterView />
 </template>
 
 <style scoped>
