@@ -2,7 +2,13 @@
 export default {
   content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
-    extend: {}
+    extend: {
+      fontFamily: {
+        barlow: ['Barlow', 'sans-serif'],
+        satisfy: ['Satisfy', 'sans-serif'],
+        roboto: ['Roboto Condensed', 'sans-serif']
+      }
+    }
   },
   plugins: []
 }
