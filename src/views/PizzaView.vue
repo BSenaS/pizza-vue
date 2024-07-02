@@ -11,6 +11,7 @@ import HeaderView from '@/layout/header/HeaderView.vue'
     <PizzaHero />
     <PizzaForm />
   </div>
+  <FooterView />
 </template>
 
 <style scoped></style>
