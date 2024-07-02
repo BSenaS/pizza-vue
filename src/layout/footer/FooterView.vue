@@ -51,5 +51,7 @@ import { footerImages } from '../../data'
         </div>
       </div>
     </div>
+    <hr class="border w-full border-white opacity-15 sm:mt-12 mt-8" />
+    <p class="max-w-[1320px] mx-auto px-4 sm:mt-12 mt-8">© 2023 Teknolojik Yemekler.</p>
   </main>
 </template>
