@@ -35,3 +35,24 @@ export const productData = [
 ]
 
 export const footerImages: string[] = [image, image2, image3, image4, image5, image6]
+
+export const toppingsArr: string[] = [
+  'Pepperoni',
+  'Sosis',
+  'Kanada Jambonu',
+  'Tavuk Izgara',
+  'Soğan',
+  'Domates',
+  'Mısır',
+  'Sucuk',
+  'Jalepeno',
+  'Sarımsak',
+  'Biber',
+  'Sucuk',
+  'Ananas',
+  'Kabak'
+]
+
+export const pizzaSize: string[] = ['S', 'M', 'L']
+
+export const doughSize: string[] = ['İnce', 'Orta', 'Kalın']
