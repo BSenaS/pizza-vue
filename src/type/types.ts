@@ -6,4 +6,11 @@ type PizzaType = {
   pizzaCount: number
 }
 
-export { type PizzaType }
+type ErrorMsgType = {
+  sizeError: string
+  doughSizeError: string
+  ingredientsError: string
+  customerNoteError: string
+  calculateErrorMsg: string
+}
+export type { PizzaType, ErrorMsgType }

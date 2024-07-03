@@ -1,10 +1,11 @@
 <script setup lang="ts">
-import { computed } from 'vue'
 import { toppingsArr, pizzaSize, doughSize } from '@/data'
 import PizzaCalculate from './PizzaCalculate.vue'
 import { useFormStore } from '../../stores/formStore'
+import { storeToRefs } from 'pinia'
 const formStore = useFormStore()
 const { pizzaState } = formStore
+const { errorMsg } = storeToRefs(formStore)
 </script>
 <template>
   <div class="w-full font-barlow">
@@ -13,6 +14,9 @@ const { pizzaState } = formStore
       <div class="flex w-full">
         <div class="flex flex-col w-full gap-4">
           <h2 class="text-xl font-semibold">Boyut Seç <span class="text-[#CE2829]">*</span></h2>
+          <p v-if="errorMsg.sizeError" class="text-[#CE2829] font-normal">
+            {{ errorMsg.sizeError }}
+          </p>
           <div class="flex">
             <div class="flex flex-wrap justify-between gap-2 relative">
               <label
@@ -33,7 +37,10 @@ const { pizzaState } = formStore
           </div>
         </div>
         <div class="flex flex-col gap-2">
-          <h2 class="text-xl font-semibold">Hamur Seç <span>*</span></h2>
+          <h2 class="text-xl font-semibold">Hamur Seç <span class="text-[#CE2829]">*</span></h2>
+          <p v-if="errorMsg.doughSizeError" class="text-[#CE2829] font-normal">
+            {{ errorMsg.doughSizeError }}
+          </p>
           <select
             class="text-[#5F5F5F] font-medium font-barlow w-[200px] bg-[#FAF7F2] py-4 rounded-md sm:w-[250px] sm:pl-2"
             v-model="pizzaState.doughSizeState"
@@ -49,6 +56,9 @@ const { pizzaState } = formStore
       <div class="flex flex-col gap-4 font-barlow">
         <h2 class="text-xl font-semibold">Ek Malzemeler</h2>
         <p class="font-medium text-[#5F5F5F]">En Fazla 10 malzeme seçebilirsiniz. 5₺</p>
+        <p v-if="errorMsg.ingredientsError" class="text-[#CE2829] font-normal">
+          {{ errorMsg.ingredientsError }}
+        </p>
         <div class="flex flex-wrap justify-between gap-2">
           <label
             v-for="(topping, index) in toppingsArr"
@@ -69,6 +79,9 @@ const { pizzaState } = formStore
       <!-- Siparis Notu -->
       <div class="flex flex-col gap-4">
         <h2 class="font-semibold text-xl">Sipariş Notu</h2>
+        <p v-if="errorMsg.customerNoteError" class="text-[#CE2829] font-normal">
+          {{ errorMsg.customerNoteError }}
+        </p>
         <textarea
           name="Siparis Notu"
           placeholder="Siparişine eklemek istediğin bir not var mı?"

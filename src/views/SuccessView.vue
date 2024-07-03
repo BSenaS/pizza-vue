@@ -12,7 +12,7 @@ const { totalCost, pizzaState, ingredientsCost } = storeToRefs(formStore)
       <header class="font-londrina text-5xl text-center sm:mt-24 mt-12">
         <h1>Teknolojik Yemekler</h1>
       </header>
-      <div class="text-center">
+      <div class="flex flex-col text-center gap-8">
         <p class="font-satisfy text-[32px] text-[#FDC913]">lezzetin yolda</p>
         <p class="font-roboto sm:text-[86px] text-5xl font-light">SİPARİŞ ALINDI</p>
       </div>
@@ -31,9 +31,13 @@ const { totalCost, pizzaState, ingredientsCost } = storeToRefs(formStore)
           <div class="flex">
             <span
               >Ek Malzemeler:
-              <span v-for="item in pizzaState.extraIngredients" :key="item" class="font-semibold">{{
-                item
-              }}</span>
+              <span
+                v-for="(item, index) in pizzaState.extraIngredients"
+                :key="item"
+                class="font-semibold"
+              >
+                {{ item }}<span v-if="index < pizzaState.extraIngredients.length - 1">, </span>
+              </span>
             </span>
           </div>
         </div>
