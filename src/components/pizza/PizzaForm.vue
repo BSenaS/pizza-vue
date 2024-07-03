@@ -1,8 +1,11 @@
 <script setup lang="ts">
+import { computed } from 'vue'
 import { toppingsArr, pizzaSize, doughSize } from '@/data'
 import PizzaCalculate from './PizzaCalculate.vue'
+import { useFormStore } from '../../stores/formStore'
+const formStore = useFormStore()
+const { pizzaState } = formStore
 </script>
-
 <template>
   <div class="w-full font-barlow">
     <div class="flex flex-col max-w-[600px] font-barlow sm:mx-auto mx-2 gap-8">
@@ -13,12 +16,18 @@ import PizzaCalculate from './PizzaCalculate.vue'
           <div class="flex">
             <div class="flex flex-wrap justify-between gap-2 relative">
               <label
-                v-for="(pizza, index) in pizzaSize"
+                v-for="(size, index) in pizzaSize"
                 :key="index"
                 class="flex gap-2 topping-label items-center text-[#5F5F5F] font-medium font-barlow"
               >
-                <input type="radio" name="pizzaSize" class="size-radio rounded-full" />
-                <span class="absolute ml-[17px]">{{ pizza }}</span>
+                <input
+                  type="radio"
+                  name="pizzaSize"
+                  class="size-radio rounded-full"
+                  :value="size"
+                  v-model="pizzaState.pizzaSizeState"
+                />
+                <span class="absolute ml-[17px]">{{ size }} </span>
               </label>
             </div>
           </div>
@@ -27,6 +36,7 @@ import PizzaCalculate from './PizzaCalculate.vue'
           <h2 class="text-xl font-semibold">Hamur Seç <span>*</span></h2>
           <select
             class="text-[#5F5F5F] font-medium font-barlow w-[200px] bg-[#FAF7F2] py-4 rounded-md sm:w-[250px] sm:pl-2"
+            v-model="pizzaState.doughSizeState"
           >
             <option disabled selected class="text-[#5F5F5F] font-medium">
               Hamur Kalınlığı Seç
@@ -46,7 +56,12 @@ import PizzaCalculate from './PizzaCalculate.vue'
             class="flex gap-2 topping-label items-center text-[#5F5F5F] font-bold font-barlow w-[45%] sm:w-[32%]"
             :class="{ 'sm:ml-1 sm:mr-auto mr-0 ml-0': index === toppingsArr.length - 1 }"
           >
-            <input type="checkbox" class="topping-checkbox flex items-center justify-center" />
+            <input
+              type="checkbox"
+              class="topping-checkbox flex items-center justify-center"
+              :value="topping"
+              v-model="pizzaState.extraIngredients"
+            />
             {{ topping }}
           </label>
         </div>
@@ -58,6 +73,7 @@ import PizzaCalculate from './PizzaCalculate.vue'
           name="Siparis Notu"
           placeholder="Siparişine eklemek istediğin bir not var mı?"
           class="flex w-full pt-6 pl-3 text-[#5F5F5F] font-medium bg-[#FAF7F2] rounded-md"
+          v-model="pizzaState.customerNote"
         ></textarea>
       </div>
       <hr class="border w-full border-[#5F5F5F80] opacity-50" />

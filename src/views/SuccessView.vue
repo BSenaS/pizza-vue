@@ -1,4 +1,10 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import { useFormStore } from '@/stores/formStore'
+import { storeToRefs } from 'pinia'
+
+const formStore = useFormStore()
+const { totalCost, pizzaState, ingredientsCost } = storeToRefs(formStore)
+</script>
 
 <template>
   <div class="w-full min-h-screen bg-[#CE2829] text-white font-barlow">
@@ -16,16 +22,18 @@
         <div class="flex flex-col max-w-52 flex-wrap">
           <div>
             <span>Boyut:</span>
-            <span class="font-semibold">L</span>
+            <span class="font-semibold">{{ pizzaState.doughSizeState }}</span>
           </div>
           <div>
             <span>Hamur: </span>
-            <span class="font-semibold">Süpper İnce</span>
+            <span class="font-semibold">{{ pizzaState.pizzaSizeState }}</span>
           </div>
           <div class="flex">
             <span
               >Ek Malzemeler:
-              <span class="font-semibold">Pepperoni, Sosis, Mısır, Ananas, Jalepeno</span>
+              <span v-for="item in pizzaState.extraIngredients" :key="item" class="font-semibold">{{
+                item
+              }}</span>
             </span>
           </div>
         </div>
@@ -38,11 +46,11 @@
             <span class="text-[20px] font-bold">Sipariş Toplamı</span>
             <div class="flex justify-between font-semibold">
               <span>Seçimler</span>
-              <span>25.00TL</span>
+              <span>{{ ingredientsCost }}₺</span>
             </div>
             <div class="flex justify-between font-semibold">
               <span>Toplam</span>
-              <span>110.50TL</span>
+              <span>{{ totalCost }}₺</span>
             </div>
           </div>
         </div>
