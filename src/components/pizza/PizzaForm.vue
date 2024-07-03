@@ -45,9 +45,10 @@ const { errorMsg } = storeToRefs(formStore)
             class="text-[#5F5F5F] font-medium font-barlow w-[200px] bg-[#FAF7F2] py-4 rounded-md sm:w-[250px] sm:pl-2"
             v-model="pizzaState.doughSizeState"
           >
-            <option disabled selected class="text-[#5F5F5F] font-medium">
+            <option disabled value="" selected class="text-[#5F5F5F] font-medium">
               Hamur Kalınlığı Seç
             </option>
+
             <option v-for="dough in doughSize" :key="dough" :value="dough">{{ dough }}</option>
           </select>
         </div>
