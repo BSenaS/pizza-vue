@@ -1,4 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import router from '@/router'
+const routeToSuccess = () => {
+  router.push('/pizza')
+}
+</script>
 
 <template>
   <div
@@ -10,7 +15,10 @@
         <h2 class="font-bold text-5xl">Özel Lezzetus</h2>
         <p class="font-semibold text-[20px]">Position:Absolute Acı Burger</p>
         <div>
-          <button class="py-4 px-8 rounded-full bg-white text-red-600 text-sm font-semibold">
+          <button
+            class="py-4 px-8 rounded-full bg-white text-red-600 text-sm font-semibold"
+            @click="routeToSuccess"
+          >
             Sipariş Ver
           </button>
         </div>
@@ -22,7 +30,10 @@
         <div class="flex flex-col gap-4 mx-6 my-8">
           <h2 class="text-2xl font-bold max-w-48">Hackathlon Burger Menü</h2>
           <div>
-            <button class="py-4 px-8 rounded-full bg-white text-red-600 text-sm font-semibold">
+            <button
+              class="py-4 px-8 rounded-full bg-white text-red-600 text-sm font-semibold"
+              @click="routeToSuccess"
+            >
               Sipariş Ver
             </button>
           </div>
@@ -34,7 +45,10 @@
             <span class="text-red-600">Çooook</span> hızlı npm gibi kurye
           </h2>
           <div>
-            <button class="py-4 px-8 rounded-full bg-white text-red-600 text-sm font-semibold">
+            <button
+              class="py-4 px-8 rounded-full bg-white text-red-600 text-sm font-semibold"
+              @click="routeToSuccess"
+            >
               Sipariş Ver
             </button>
           </div>

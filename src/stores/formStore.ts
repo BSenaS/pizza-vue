@@ -1,4 +1,4 @@
-import { ref, computed, watch } from 'vue'
+import { ref, computed } from 'vue'
 import { defineStore } from 'pinia'
 import { type PizzaType, type ErrorMsgType } from '../type/types'
 import router from '@/router'
